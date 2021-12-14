@@ -6,6 +6,8 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import Home from '../Home/Home';
+import LEDpage from '../LEDpage/LEDpage';
 import Login from '../Login/login';
 
 
@@ -25,8 +27,8 @@ export default class NavbarComp extends Component {
                                 style={{ maxHeight: '100px' }}
                                 navbarScroll
                             >
-                                <Nav.Link as={Link} to="/login">Home</Nav.Link>
-
+                                <Nav.Link as={Link} to="/login">HOME</Nav.Link>
+                                <Nav.Link as={Link} to="/led">LED</Nav.Link>
                             </Nav>
 
                         </Navbar.Collapse>
@@ -36,6 +38,9 @@ export default class NavbarComp extends Component {
                     <Switch>
                     <Route path="/login">
                     <Login/>
+                        </Route>
+                    <Route path="/led">
+                    <LEDpage/>
                         </Route>
                     </Switch>
                 </div>
