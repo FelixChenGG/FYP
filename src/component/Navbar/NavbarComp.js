@@ -19,7 +19,7 @@ export default class NavbarComp extends Component {
                 <div>
 
                     <Navbar bg="dark" variant={"dark"} expand="lg">
-                        <Navbar.Brand href="#">Navbar Demo Arjun Codes</Navbar.Brand>
+                        <Navbar.Brand href="#">Final Year Project</Navbar.Brand>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                             <Nav
