@@ -2,7 +2,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Login from './component/Login/login';
-import Home from './component/Home/Home';
+import Locate from './component/Navbar/Locate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope, faKey, faLock, faUser  } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
@@ -22,7 +22,7 @@ function App() {
       
        <Router history={history}>
         <Route exact path="/" component={Login} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/index" component={Locate} />
       </Router>
           
       

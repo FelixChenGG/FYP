@@ -12,12 +12,12 @@ export default class Login extends Component {
 
     handleSubmit (event) {
         event.preventDefault();
-                history.push({pathname:"/home",state:{}})
+                history.push({pathname:"/index",state:{}})
            
     };
     
     toMessage () {
-        window.location.href = "../../Home/Home";
+        window.location.href = "../../Navbar/Locate";
         }
 
       render() {

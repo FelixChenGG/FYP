@@ -6,9 +6,9 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
 import Login from '../Login/login';
+import WebCampage from '../WebCamPage/WebCampage';
 
 
 
@@ -24,11 +24,12 @@ export default class NavbarComp extends Component {
                         <Navbar.Collapse id="navbarScroll">
                             <Nav
                                 className="mr-auto my-2 my-lg-0"
-                                style={{ maxHeight: '100px' }}
+                                style={{ maxHeight: '200px' }}
                                 navbarScroll
                             >
                                 <Nav.Link as={Link} to="/login">HOME</Nav.Link>
                                 <Nav.Link as={Link} to="/led">LED</Nav.Link>
+                                <Nav.Link as={Link} to="/cam">Web Cam</Nav.Link>
                             </Nav>
 
                         </Navbar.Collapse>
@@ -42,6 +43,10 @@ export default class NavbarComp extends Component {
                     <Route path="/led">
                     <LEDpage/>
                         </Route>
+                    <Route path="/cam">
+                    <WebCampage />
+                        </Route>
+
                     </Switch>
                 </div>
             </Router>
