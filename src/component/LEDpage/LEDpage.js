@@ -1,4 +1,4 @@
-import { getByDisplayValue } from '@testing-library/react';
+
 import React,{Component,useState,useEffect} from 'react'
 import { Button,ButtonGroup,ToggleButton} from 'react-bootstrap'
 
@@ -6,32 +6,38 @@ import { Button,ButtonGroup,ToggleButton} from 'react-bootstrap'
 
 function ToggleButtonExample() {
 
-  const [urlValue, setURLValue] = useState()
+  const [urlValue, setURLValue] = useState("/ledRed/off")
  
   const [radioValue, setRadioValue] = useState('off')
   const radios = [
     { name: 'TURN OFF', value: 'off' },
     { name: 'TURN ON', value: 'on' },
   ];
-
   const handleChange=(e)=> {
     
-    setRadioValue(e.value)
-    setURLValue("/ledRed/"+e.value)
-    console.log(e.value)
-    
-    fetch('http://127.0.0.1:80'+urlValue
-      //   'methods':'GET',
-      //   // headers : {
-      //   //   'Content-Type':'application/json'
-      //   // }
-      // }
-      )
-      .catch(error => console.log(error))
-      .then(
-        
-      )}
+    setRadioValue(e.currentTarget.value)
+    setURLValue("/ledRed/"+e.currentTarget.value)
+   
+    }
+ 
 
+    //handle Synchronize variable
+     useEffect(()=>{
+      console.log(radioValue)
+      console.log(urlValue)
+      fetch('http://127.0.0.1:5000'+urlValue
+    //   'methods':'GET',
+    //   // headers : {
+    //   //   'Content-Type':'application/json'
+    //   // }
+    // }
+    )
+    .catch(error => console.log(error))
+    .then()
+    },[radioValue,urlValue])
+
+    
+  
 
     return (
         <>
@@ -47,8 +53,8 @@ function ToggleButtonExample() {
                 name="radio"
                 value={radio.value}
                 checked={radioValue === radio.value}
-                onClick={handleChange}
-
+                onChange={handleChange}
+                
             >
                 {radio.name}
           </ToggleButton>
