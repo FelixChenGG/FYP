@@ -22,7 +22,7 @@ function GreenButton() {
      useEffect(()=>{
         console.log(radioValue)
         console.log(urlValue)
-        fetch('http://127.0.0.1:5000'+urlValue
+        fetch('http://192.168.8.100:5000'+urlValue
       //   'methods':'GET',
       //   // headers : {
       //   //   'Content-Type':'application/json'
