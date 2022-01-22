@@ -19,13 +19,12 @@ function App() {
 
   return (
     <div className="App">
-      
        <Router history={history}>
         <Route exact path="/" component={Login} />
         <Route exact path="/index" component={Locate} />
       </Router>
-          
-      
+
+
     </div>
   );
 }

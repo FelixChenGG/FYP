@@ -13,11 +13,11 @@ export default class Login extends Component {
     handleSubmit (event) {
         event.preventDefault();
                 history.push({pathname:"/index",state:{}})
-           
+
     };
-    
+
     toMessage () {
-        window.location.href = "../../Navbar/Locate";
+        window.location.href = "../../Navbar/locate";
         }
 
       render() {
@@ -28,10 +28,10 @@ export default class Login extends Component {
               <Container>
                     <Card >    
                        <Card.Header>   
-                            
+
                             <h3>Sign In</h3>
                         </Card.Header> 
-                        
+
                         <Card.Body>
                             <Form onSubmit = {this.handleSubmit}>
                                 <Form.Group className="input-group">
@@ -40,7 +40,7 @@ export default class Login extends Component {
                                             <FontAwesomeIcon icon="user"/></span>
                                      </div>
                                    <input type="text" className="form-control" placeholder="username" ></input>
-                                   
+
                                 </Form.Group>
                                 <p></p>
                                 <Form.Group className="input-group">
@@ -58,11 +58,11 @@ export default class Login extends Component {
                                             </div>
                                  </Row>
                                  <p></p>
-                                
+
                                 <Button type="submit">Submit form
                                 </Button>
-                            
-                                
+
+
                             </Form>
                         </Card.Body>
                     </Card>
@@ -71,6 +71,6 @@ export default class Login extends Component {
 
 
         )
-    
+
     }
 }

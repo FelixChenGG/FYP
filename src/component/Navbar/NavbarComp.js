@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
-import Login from '../Login/login';
+import Home from '../Home/Home';
 import WebCampage from '../WebCamPage/WebCampage';
 
 
