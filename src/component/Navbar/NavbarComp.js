@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
-import Home from '../Home/Home';
-import WebCampage from '../WebCamPage/WebCampage';
+import NFCRecord from '../Record/NFCRecord';
+import WebCamRecord from '../Record/WebCamRecord';
 
 
 
@@ -29,8 +29,9 @@ export default class NavbarComp extends Component {
                                 navbarScroll
                             >
                                 <Nav.Link as={Link} to="/home">HOME</Nav.Link>
+                                <Nav.Link as={Link} to="/nfcrecord">NFC Record</Nav.Link>
+                                <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
                                 <Nav.Link as={Link} to="/led">LED</Nav.Link>
-                                <Nav.Link as={Link} to="/cam">Web Cam</Nav.Link>
                             </Nav>
 
                         </Navbar.Collapse>
@@ -44,8 +45,11 @@ export default class NavbarComp extends Component {
                     <Route path="/led">
                     <LEDpage/>
                         </Route>
-                    <Route path="/cam">
-                    <WebCampage />
+                    <Route path="/nfcrecord">
+                    <NFCRecord/>
+                        </Route>
+                    <Route path="/webcamrecord">
+                    <WebCamRecord/>
                         </Route>
 
                     </Switch>

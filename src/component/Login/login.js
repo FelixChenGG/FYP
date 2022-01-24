@@ -23,9 +23,11 @@ export default class Login extends Component {
       render() {
         return (
             <div className="Login">
-                <p></p>
-                <p></p>
-              <Container>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              <Container >
                     <Card >    
                        <Card.Header>   
 
@@ -68,6 +70,7 @@ export default class Login extends Component {
                     </Card>
 	            </Container>
             </div>
+            
 
 
         )

@@ -1,0 +1,12 @@
+    .Home{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../../assets/img/portfolio/thumbnails/5.jpg");
+    height: 200px;
+    font-family: 'Numans', sans-serif;
+    }
+
+    .Card{
+        
+    width: 100%;
+    }

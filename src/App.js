@@ -24,7 +24,6 @@ function App() {
         <Route exact path="/index" component={Locate} />
       </Router>
 
-
     </div>
   );
 }
