@@ -10,7 +10,28 @@ import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
 import NFCRecord from '../Record/NFCRecord';
 import WebCamRecord from '../Record/WebCamRecord';
+// import { Store } from 'react-notifications-component';
+// import 'react-notifications-component/dist/theme.css';
+// import "animate.css/animate.min.css";
+// //npm install react-notifications-component
+// //npm run build
 
+// function Noti(){
+//     Store.addNotification({
+//             title: "Wonderful!",
+//             message: "teodosii@react-notifications-component",
+//             type: "success",
+//             insert: "top",
+//             container: "top-right",
+//             animationIn: ["animate__animated", "animate__fadeIn"],
+//             animationOut: ["animate__animated", "animate__fadeOut"],
+//             dismiss: {
+//               duration: 5000,
+//               onScreen: true
+//             }
+//           })
+
+// }
 
 
 export default class NavbarComp extends Component {
@@ -18,7 +39,6 @@ export default class NavbarComp extends Component {
         return (
             <Router>
                 <div>
-
                     <Navbar bg="dark" variant={"dark"} expand="lg">
                         <Navbar.Brand href="#">Final Year Project</Navbar.Brand>
                         <Navbar.Toggle aria-controls="navbarScroll" />

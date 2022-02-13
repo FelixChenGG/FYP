@@ -1,26 +1,25 @@
 
-import React, {Component} from 'react';
+import React from 'react';
 import { Button,Card,Form, Container,Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './login.css';
+import {
+    useHistory
+  } from "react-router-dom";
 
 
-import history from '../../history/History'
+function Login ()  {
+    let history = useHistory();
 
-export default class Login extends Component {
-
-    handleSubmit (event) {
+    const handleSubmit =(event)=> {
+        
         event.preventDefault();
+                
                 history.push({pathname:"/index",state:{}})
 
     };
 
-    toMessage () {
-        window.location.href = "../../Navbar/locate";
-        }
-
-      render() {
         return (
             <div className="Login">
                 <br/>
@@ -35,7 +34,7 @@ export default class Login extends Component {
                         </Card.Header> 
 
                         <Card.Body>
-                            <Form onSubmit = {this.handleSubmit}>
+                            <Form onSubmit = {handleSubmit}>
                                 <Form.Group className="input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">
@@ -61,7 +60,7 @@ export default class Login extends Component {
                                  </Row>
                                  <p></p>
 
-                                <Button type="submit">Submit form
+                                <Button type="submit" >Submit form
                                 </Button>
 
 
@@ -73,7 +72,7 @@ export default class Login extends Component {
             
 
 
-        )
+            );
 
-    }
-}
+        }
+    export default Login;

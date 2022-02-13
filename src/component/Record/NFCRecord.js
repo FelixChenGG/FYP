@@ -1,31 +1,42 @@
-import React,{Component} from 'react'
+import React,{Component,useState,useEffect} from 'react'
 import { Card, Table,Pagination} from 'react-bootstrap'
 
 
-export default class NFCRecord extends Component {
-    render() {
+
+function Record() {
+        const [records, setRecords] = useState()
+
+        useEffect(() => {
+            fetch('http://192.168.8.100:5000/nfc/read')
+            .then(res => res.json())
+            .then(data => setRecords(data))
+        }, []);
+
+   
         return (
-            <>
-                <div>
-                    <Card style={{ width: '100%' }}>
+        <>  <Card style={{ width: '100%' }}>
                     <Card.Header className='bg-white'>NFC Record</Card.Header>
                     <Card.Body className='bg-white'>
                          <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                <th>#</th>
                                 <th>ID</th>
+                                <th>Role</th>
                                 <th>Time</th>
-                                <th>State</th>
+                                <th>UID</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {records.id.map((record) =>{
                                 <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{record.name}</td>
+                                <td>{record.role}</td>
+                                <td>{record.time}</td>
+                                <td>{record.UID}</td>
                                 </tr>
+
+                                })}
+                               
                                 <tr>
                                 <td>2</td>
                                 <td>Jacob</td>
@@ -45,6 +56,23 @@ export default class NFCRecord extends Component {
                          </Pagination>
                     </Card.Footer>
                     </Card>
+       
+        
+        
+      </>
+    )
+
+}
+
+
+export default class NFCRecord extends Component {
+
+    render() {
+        
+        return (
+            <>
+                <div>
+                  <Record/>
                 </div>
                 </>
             )
