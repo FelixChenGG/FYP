@@ -49,9 +49,9 @@ export default class NavbarComp extends Component {
                                 navbarScroll
                             >
                                 <Nav.Link as={Link} to="/home">HOME</Nav.Link>
-                                <Nav.Link as={Link} to="/nfcrecord">NFC Record</Nav.Link>
+                                {/* <Nav.Link as={Link} to="/nfcrecord">NFC Record</Nav.Link>
                                 <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
-                                <Nav.Link as={Link} to="/led">LED</Nav.Link>
+                                <Nav.Link as={Link} to="/led">LED</Nav.Link> */}
                             </Nav>
 
                         </Navbar.Collapse>

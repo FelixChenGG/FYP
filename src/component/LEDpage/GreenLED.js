@@ -8,62 +8,62 @@ import "animate.css/animate.min.css";
 
 function GreenButton() {
     
-    useEffect(() => {
-        fetch('http://127.0.0.1:5000/nfc/read')
-        .then(response => response.json())
-        .then(data =>    {
-            if(data.role == null){
+    // useEffect(() => {
+    //     fetch('http://127.0.0.1:5000/nfc/read')
+    //     .then(response => response.json())
+    //     .then(data =>    {
+    //         if(data.role == null){
                 
-            }else{
+    //         }else{
                 
-            }
+    //         }
              
-        }
+    //     }
             
    
         
-        )
-    }, []);
-        // useEffect(() => {
-        //     fetch('http://127.0.0.1:5000/nfc/read')
-        //     .then(response => response.json())
-        //     .then(data =>    {
-        //         if(data.role == null){
-        //             Store.addNotification({
-        //             title: "Wonderful!",
-        //             message: "Welcome ! "+data.name,
-        //             type: "success",
-        //             insert: "top",
-        //             container: "top-right",
-        //             animationIn: ["animate__animated", "animate__fadeIn"],
-        //             animationOut: ["animate__animated", "animate__fadeOut"],
-        //             dismiss: {
-        //                 duration: 5000,
-        //                 onScreen: true
-        //             }
-        //             })
-        //         }else{
-        //             Store.addNotification({
-        //                 title: "Worning",
-        //                 message: "Someone try to open the door",
-        //                 type: "danger",
-        //                 insert: "top",
-        //                 container: "top-right",
-        //                 animationIn: ["animate__animated", "animate__fadeIn"],
-        //                 animationOut: ["animate__animated", "animate__fadeOut"],
-        //                 dismiss: {
-        //                     duration: 5000,
-        //                     onScreen: true
-        //                 }
-        //                 })
-        //         }
+    //     )
+    // }, []);
+        useEffect(() => {
+            fetch('http://127.0.0.1:5000/nfc/read')
+            .then(response => response.json())
+            .then(data =>    {
+                if(data.role == null){
+                    Store.addNotification({
+                    title: "Wonderful!",
+                    message: "Welcome ! "+data.name,
+                    type: "success",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                    }
+                    })
+                }else{
+                    Store.addNotification({
+                        title: "Worning",
+                        message: "Someone try to open the door",
+                        type: "danger",
+                        insert: "top",
+                        container: "top-right",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                            duration: 5000,
+                            onScreen: true
+                        }
+                        })
+                }
                  
-        //     }
+            }
                 
        
             
-        //     )
-        // }, []);
+            )
+        }, []);
         
         
        

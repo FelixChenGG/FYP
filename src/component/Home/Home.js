@@ -1,11 +1,12 @@
 import React,{Component,useEffect,useState} from 'react'
 import { Row, Container, Badge,Card } from 'react-bootstrap'
 import { DoorClosed , DoorOpenFill } from 'react-bootstrap-icons';
+import AccessRecord from './AccessRecord';
 // npm install react-bootstrap-icons --save
 import './Home.css';
 
-function DoorState() {
-    const [isOpen, setIsOpen] = useState(false)
+function Home() {
+    const [isOpen, setIsOpen] = useState(true)
         
     useEffect(() => {
         
@@ -21,7 +22,7 @@ function DoorState() {
             door = <DoorClosed color="royalblue" size={50} /> 
         }
   return (
-    <>
+    
     <div>
        <div className='Home'>
            <br/>
@@ -45,25 +46,14 @@ function DoorState() {
              
            </Card>
            </div> 
+           <AccessRecord/>
 
           
           </div>
-           </>
+           
 )
 
 }
 
 
-export default class Home extends Component {
-    render() {
-        
-        return (
-            <>
-            <div>
-                <DoorState />
-               </div>
-                </>
-            )
-    }
-    
-}
+export default Home;
