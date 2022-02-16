@@ -1,7 +1,7 @@
 import React,{Component,useEffect,useState} from 'react'
 import { Row, Container, Badge,Card } from 'react-bootstrap'
 import { DoorClosed , DoorOpenFill } from 'react-bootstrap-icons';
-import AccessRecord from './AccessRecord';
+
 // npm install react-bootstrap-icons --save
 import './Home.css';
 
@@ -46,7 +46,6 @@ function Home() {
              
            </Card>
            </div> 
-           <AccessRecord/>
 
           
           </div>
