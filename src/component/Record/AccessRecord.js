@@ -7,9 +7,9 @@ function AccessRecord() {
         const [records, setRecords] = useState([])
 
         useEffect(() => {
-            fetch('http://127.0.0.1:5000/record/all')
+            fetch('http://127.0.0.1:5001/record/all')
             .then(res => res.json())
-            .then(data => setRecords(data.uid))
+            .then(data => setRecords(data.data))
         }, [records]);
 
    //setRecords(data)
@@ -26,7 +26,8 @@ function AccessRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {records.map((record) =>(
+                                {records.map(record =>(
+                                
                                 <tr>
                                 <td>{record.datetime}</td>
                                 <td>{record.msg}</td>
