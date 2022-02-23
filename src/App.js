@@ -9,7 +9,7 @@ import React from 'react';
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import {
-  BrowserRouter as Router ,
+  HashRouter as Router ,
   Route,
   Switch
 } from "react-router-dom";
