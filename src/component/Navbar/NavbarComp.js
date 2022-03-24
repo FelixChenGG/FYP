@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
+import NFCreg from '../NFCreg/NFCreg';
 import AccessRecord from '../Record/AccessRecord';
 import NFCRecord from '../Record/NFCRecord';
 import WebCamRecord from '../Record/WebCamRecord';
@@ -51,6 +52,7 @@ export default class NavbarComp extends Component {
                             >
                                 <Nav.Link as={Link} to="/home">HOME</Nav.Link>
                                 <Nav.Link as={Link} to="/accessrecord">Access Record</Nav.Link>
+                                <Nav.Link as={Link} to="/nfcregister">NFC Rregister</Nav.Link>
                                 {/* <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
                                 <Nav.Link as={Link} to="/led">LED</Nav.Link> */}
                             </Nav>
@@ -71,6 +73,9 @@ export default class NavbarComp extends Component {
                         </Route>
                     <Route path="/webcamrecord">
                     <WebCamRecord/>
+                        </Route>
+                    <Route path="/nfcregister">
+                    <NFCreg/>
                         </Route>
 
                     </Switch>
