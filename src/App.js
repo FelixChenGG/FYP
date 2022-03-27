@@ -123,13 +123,14 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 const LoginReducer = async (state, action) => {
-  // let location = useLocation();
+  let location = await useLocation();
   let auth = await useAuth();
   let history = useHistory();
+  let { from } = location.state || { from: { pathname: "/index" } };
   switch(action.type) {
       case ACTIONS.SIGNIN:
          return auth.signin(() => {
-            history.push({pathname:"/index"})
+          history.replace(from);
           });
 
       // case 'success':
