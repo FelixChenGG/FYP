@@ -1,29 +1,33 @@
 
-import React,{useState} from 'react'
-import { Button,Card,Form, Container,Row} from 'react-bootstrap';
+import React,{useState,useContext, createContext,} from 'react'
+import { Button,Card,Form, Container, AccordionButton} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './login.css';
 import { Store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import "animate.css/animate.min.css";
+import {ACTIONS} from '../../App.js'
 //npm install react-notifications-component
 //npm run build
 import {
-    useHistory
+    useHistory,
+    useLocation
   } from "react-router-dom";
 
 
-function Login ()  {
+
+function Login ({dispatch})  {
+    let location = useLocation();
     let history = useHistory();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-
-    const handleSubmit =(event)=> {
+    let { from } = location.state || { from: { pathname: "/index" } };
+   
+    const handleSubmit =(event)=> { 
          event.preventDefault();
-        if(name == 'admin' && password == '1'){
-           
-            history.push({pathname:"/index",state:{}})
+        if(name === 'admin' && password === '1'){
+           dispatch({type: ACTIONS.SIGNIN, payload:{name:name}})
         }else{
             history.push({pathname:"/",state:{}})
             Store.addNotification({
@@ -82,7 +86,6 @@ function Login ()  {
                                 <Button type="submit" >Submit form
                                 </Button>
 
-
                             </Form>
                         </Card.Body>
                     </Card>
@@ -94,4 +97,5 @@ function Login ()  {
             );
 
         }
+
     export default Login;
