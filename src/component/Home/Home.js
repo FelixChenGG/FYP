@@ -2,6 +2,7 @@
 import React,{Component,useEffect,useState} from 'react'
 import { Row, Container, Badge,Card, Button,Col  } from 'react-bootstrap'
 import { DoorClosed , DoorOpenFill } from 'react-bootstrap-icons';
+import axios from 'axios'
 
 // npm install react-bootstrap-icons --save
 import './Home.css';
@@ -18,9 +19,7 @@ function Home() {
         }else{
             setIsOpen(true)
         }
-        const axios = require('axios');
         await axios.get('http://127.0.0.1:5000/door/open')
-
         .then(function (response) {
             // handle success
             console.log(response);

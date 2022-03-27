@@ -27,7 +27,7 @@ function Login ({dispatch})  {
     const handleSubmit =(event)=> { 
          event.preventDefault();
         if(name === 'admin' && password === '1'){
-           dispatch({type: ACTIONS.SIGNIN, payload:{name:name}})
+            dispatch({type: ACTIONS.SIGNIN, payload:{name:name}})
         }else{
             history.push({pathname:"/",state:{}})
             Store.addNotification({

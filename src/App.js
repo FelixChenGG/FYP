@@ -70,12 +70,13 @@ function ProvideAuth({ children }) {
   );
 }
 
-function useAuth() {
+export function useAuth() {
   return useContext(authContext);
 }
 
-function useProvideAuth() {
+export function useProvideAuth() {
   const [user, setUser] = useState(null);
+
 
   const signin = cb => {
     return fakeAuth.signin(() => {
@@ -121,14 +122,13 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-function LoginReducer(state, action) {
+const LoginReducer = async (state, action) => {
   // let location = useLocation();
-  let auth = useAuth();
+  let auth = await useAuth();
   let history = useHistory();
   switch(action.type) {
       case ACTIONS.SIGNIN:
-        console.log(action.payload.name)
-        auth.signin(() => {
+         return auth.signin(() => {
             history.push({pathname:"/index"})
           });
 
