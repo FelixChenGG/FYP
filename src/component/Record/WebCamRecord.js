@@ -16,7 +16,7 @@ function WebCamRecord() {
     
         return (
             <>
-            <Card>
+            <Card style={{ width: '100%' }}>
             <Card.Header>
                 <h3 className="card-title">WebCam Record </h3>
                 </Card.Header>
