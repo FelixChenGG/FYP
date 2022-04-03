@@ -1,49 +1,38 @@
-import React,{Component} from 'react'
-import {Image}  from 'react-bootstrap'
-import {
-    Timeline,
-    Container,
-    YearContent,
-    BodyContent,
-    Section,
-    Description,
-   } from 'vertical-timeline-component-react';
-//npm install --save vertical-timeline-component-react
+import React,{Component,useState,useEffect} from 'react'
+import { Card, Table,Pagination} from 'react-bootstrap'
 
-const customTheme = {
-    yearColor: '#405b73',
-    lineColor: '#d0cdc4',
-    dotColor: '#262626',
-    borderDotColor: '#d0cdc4',
-    titleColor: '#405b73',
-    subtitleColor: '#bf9765',
-    textColor: '#262626',
-   };
 
-export default class WebCamRecord extends Component {
-    render() {
+
+function WebCamRecord() {
+
+    const [webimage, setWebImage] = useState([])
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:5001/record/all')
+        .then(res => res.json())
+        .then(data => setWebImage(data))
+    }, [webimage]);
+
+    
         return (
             <>
-            <Timeline theme={customTheme} dateFormat='ll'>
-                <Container>
-                <YearContent startDate='2020/07/01' currentYear />
-                <BodyContent>
-                <Section title='Title'>
-                <Image src="./img/1.jpg" responsive />
-                <Description variant='subtitle' text='Subtitle' />
-                <Description text='Description' />
-                <Description text='Another description' />
-                </Section>
-
-                <Section title='Another title'>
-                <Description text='Description' />
-                <Description text='Another description' />
-                </Section>
-                </BodyContent>
-                </Container>
-            </Timeline>,
+            <Card>
+            <Card.Header>
+                <h3 className="card-title">WebCam Record </h3>
+                </Card.Header>
+            <Card.Body>
+            <figure class="figure">
+                <img src="..." class="figure-img img-fluid rounded" alt="..."></img>
+                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+            </figure>
+            </Card.Body>
+            </Card>
+            
                 </>
             )
-    }
+    
     
 }
+
+
+export default WebCamRecord

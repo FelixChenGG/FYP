@@ -1,13 +1,18 @@
 //import React, { Header  } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Login from './component/Login/login';
 import NavbarComp from './component/Navbar/NavbarComp';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope, faKey, faLock, faUser  } from '@fortawesome/free-solid-svg-icons';
-import React , { useContext, createContext, useState ,useReducer}from 'react';
+import React , { useContext, createContext, useState }from 'react';
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './login.css';
+import { Store } from 'react-notifications-component';
+import { Button,Card,Form, Container, AccordionButton} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import {
   HashRouter as Router ,
   Route,
@@ -19,22 +24,18 @@ import {
 
 library.add(faEnvelope, faKey,faLock,faUser);
 
-export const ACTIONS = {
-   SIGNIN:'signin',
-   SIGNOUT:'signout'
-}
+
 
 
 
 function App() {
-  const[state,dispatch] =useReducer(LoginReducer,[])
   return (
     <ProvideAuth>
     <div className="App">
       <ReactNotifications />
        <Router >
        <Switch>
-         <Route exact path="/"><Login dispatch={dispatch}/></Route>
+         <Route exact path="/"><Login/></Route>
         <PrivateRoute path="/index"> <NavbarComp/> </PrivateRoute>
        </Switch>
       </Router>
@@ -122,35 +123,7 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-const LoginReducer = async (state, action) => {
-  let location = await useLocation();
-  let auth = await useAuth();
-  let history = useHistory();
-  let { from } = location.state || { from: { pathname: "/index" } };
-  switch(action.type) {
-      case ACTIONS.SIGNIN:
-         return auth.signin(() => {
-          history.replace(from);
-          });
 
-      // case 'success':
-      //     return {
-      //         ...state,
-      //         isLoggedIn: true,
-      //         isLoading: false,
-      //     }
-      // case 'error':
-      //     return {
-      //         ...state,
-      //         error: action.payload.error,
-      //         name: '',
-      //         pwd: '',
-      //         isLoading: false,
-      //     }
-      // default: 
-      //     return state;
-  }
-}
 // function AuthButton() {
 //   let history = useHistory();
 //   let auth = useAuth();
@@ -170,5 +143,89 @@ const LoginReducer = async (state, action) => {
 //     <p>You are not logged in.</p>
 //   );
 // }
+
+function Login ()  {
+  let location = useLocation();
+  let history = useHistory();
+  let auth = useAuth();
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  let { from } = location.state || { from: { pathname: "/index" } };
+ 
+  const handleSubmit =(event)=> { 
+       event.preventDefault();
+      if(name === 'admin' && password === '1'){
+        auth.signin(() => {
+          history.replace(from);
+        });
+      }else{
+          history.push({pathname:"/",state:{}})
+          Store.addNotification({
+              title: "Worning",
+              message: "Username or Password incorrect !!!",
+              type: "danger",
+              insert: "top",
+              container: "top-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                  duration: 5000,
+                  onScreen: true
+              }
+              })
+      }
+      
+
+  };
+
+      return (
+          <div className="Login">
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+            <Container >
+                  <Card >    
+                     <Card.Header>   
+
+                          <h3>Sign In</h3>
+                      </Card.Header> 
+
+                      <Card.Body>
+                          <Form onSubmit = {handleSubmit}>
+                              <Form.Group className="input-group">
+                                  <div className="input-group-prepend">
+                                      <span className="input-group-text">
+                                          <FontAwesomeIcon icon="user"/></span>
+                                   </div>
+                                 <input type="text" className="form-control" placeholder="username" value={name}
+        onChange={(e) => setName(e.target.value)}></input>
+
+                              </Form.Group>
+                              <p></p>
+                              <Form.Group className="input-group">
+                                  <div className="input-group-prepend">
+                                      <span className="input-group-text"><FontAwesomeIcon icon="key"/></span>
+                                  </div>
+                                  <input type="password" className="form-control" placeholder="password" value={password}
+        onChange={(e) => setPassword(e.target.value)}></input>
+                              </Form.Group>
+                              <br/>
+                              <br/>
+
+                              <Button type="submit" >Submit form
+                              </Button>
+
+                          </Form>
+                      </Card.Body>
+                  </Card>
+            </Container>
+          </div>
+          
+
+
+          );
+
+      }
 
 export default App;
