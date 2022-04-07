@@ -42,7 +42,7 @@ function Home() {
            </div>
            <br/>
          <div >
-           <Card className='Card' >
+           <Card className='Card'style={{ width: '100%' }}>
                <Card.Body className='bg-white' >
                    <Container>
                    <Row xs={2} md={2} lg={2}>

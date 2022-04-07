@@ -10,7 +10,6 @@ import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
 import NFCreg from '../NFCreg/NFCreg';
 import AccessRecord from '../Record/AccessRecord';
-import NFCRecord from '../Record/NFCRecord';
 import WebCamRecord from '../Record/WebCamRecord';
 // import { Store } from 'react-notifications-component';
 // import 'react-notifications-component/dist/theme.css';
