@@ -50,8 +50,9 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-function CustomizedDialogs() {
+function CustomizedDialogs(props) {
 
+  console.log(props.result )
   const [open, setOpen] = React.useState(true);
 
   
@@ -59,9 +60,29 @@ function CustomizedDialogs() {
     setOpen(false);
   };
 
+  if(props.result == "OK"){
+        return (
+    <div>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+          Successful ! !
+        </BootstrapDialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+          Congratulation !  Successfully created !!
+          </Typography>
+        </DialogContent>
+        
+      </BootstrapDialog>
+    </div>
+  );
 
-
-  return (
+  }else if (props.result == "NO"){
+     return (
     <div>
       <BootstrapDialog
         onClose={handleClose}
@@ -80,47 +101,27 @@ function CustomizedDialogs() {
       </BootstrapDialog>
     </div>
   );
+  }
+
+
+ 
 }
 
-const SuccessDialogs=(props) =>{
-
-}
 
 
 function Register() {
-        const [name, setName] = useState("")
-        const [open, setOpen] = React.useState(true);
+        const [name, setName] = useState("hi")
+        const [results, setResult] = useState("NO")
+        
+        
         const handleSubmit =async(event)=> {
           console.log(name);
           await axios.get('http://192.168.8.100:5000/user/register/'+name)
             .then(function (response)
             {
+              setResult(response.status);
+              <CustomizedDialogs result = {results}/>
               // handle success
-              const handleClose = () => {
-                setOpen(false);
-              };
-              console.log(response.statusText )
-              if (response.statusText == "OK"){
-                return (
-                <div>
-                  <BootstrapDialog
-                    onClose={handleClose}
-                    aria-labelledby="customized-dialog-title"
-                    open={open}
-                  >
-                    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                      Successful ! !
-                    </BootstrapDialogTitle>
-                    <DialogContent dividers>
-                      <Typography gutterBottom>
-                      Congratulation !  Successfully created !!
-                      </Typography>
-                    </DialogContent>
-                    
-                  </BootstrapDialog>
-                </div>
-              );
-              }
             })
         }
         
@@ -129,7 +130,8 @@ function Register() {
         return (
         <>  
         <div>
-            <CustomizedDialogs />
+
+            <CustomizedDialogs result = {results}/>
             <Card style={{ width: '100%' }}>
                 <Card.Header>
                 <h3 className="card-title">Card Register</h3>
