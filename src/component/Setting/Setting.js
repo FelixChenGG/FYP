@@ -3,15 +3,8 @@ import { Card, Table,Pagination} from 'react-bootstrap'
 
 
 
-function WebCamRecord() {
+function Setting() {
 
-    const [webimage, setWebImage] = useState([])
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:5001/record/all')
-        .then(res => res.json())
-        .then(data => setWebImage(data))
-    }, [webimage]);
 
     
         return (
@@ -27,6 +20,7 @@ function WebCamRecord() {
             </figure>
             </Card.Body>
             </Card>
+            
                 </>
             )
     
@@ -34,4 +28,4 @@ function WebCamRecord() {
 }
 
 
-export default WebCamRecord
+export default Setting;

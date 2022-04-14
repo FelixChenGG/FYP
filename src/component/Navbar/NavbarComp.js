@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import Home from '../Home/Home';
 import LEDpage from '../LEDpage/LEDpage';
+import NFCreg from '../NFCreg/NFCreg';
 import AccessRecord from '../Record/AccessRecord';
-import NFCRecord from '../Record/NFCRecord';
 import WebCamRecord from '../Record/WebCamRecord';
 // import { Store } from 'react-notifications-component';
 // import 'react-notifications-component/dist/theme.css';
@@ -51,8 +51,9 @@ export default class NavbarComp extends Component {
                             >
                                 <Nav.Link as={Link} to="/home">HOME</Nav.Link>
                                 <Nav.Link as={Link} to="/accessrecord">Access Record</Nav.Link>
-                                {/* <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
-                                <Nav.Link as={Link} to="/led">LED</Nav.Link> */}
+                                <Nav.Link as={Link} to="/nfcregister">NFC Rregister</Nav.Link>
+                                <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
+                                {/* <Nav.Link as={Link} to="/led">LED</Nav.Link> */}
                             </Nav>
 
                         </Navbar.Collapse>
@@ -71,6 +72,9 @@ export default class NavbarComp extends Component {
                         </Route>
                     <Route path="/webcamrecord">
                     <WebCamRecord/>
+                        </Route>
+                    <Route path="/nfcregister">
+                    <NFCreg/>
                         </Route>
 
                     </Switch>

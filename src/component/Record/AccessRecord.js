@@ -37,7 +37,12 @@ function AccessRecord() {
                         </Table>
                     </Card.Body>
                     <Card.Footer className='bg-white' >
-                         <Pagination >
+                         <Pagination
+                          total={records.length}
+                          pageSize={10}
+                          size={
+                            Math.ceil(records.length/10)}
+                          >
                          <Pagination.First />
                          <Pagination.Item>{1}</Pagination.Item>
                          <Pagination.Item>{2}</Pagination.Item>
