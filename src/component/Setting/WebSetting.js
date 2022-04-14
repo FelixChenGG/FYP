@@ -1,5 +1,5 @@
 import React,{Component,useState,useEffect} from 'react'
-import { Form, FloatingLabel,Pagination} from 'react-bootstrap'
+import { Form, FloatingLabel,Row} from 'react-bootstrap'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
@@ -22,14 +22,20 @@ function WebSetting() {
                 </FloatingLabel>
                   {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
-                  
                   </Form.Group>
-              </Form>
-
-              <BootstrapSwitchButton
+                </Form>
+                <br/><br/>
+                
+                <div class="divider"></div>
+                <Row xs={2} md={2} lg={2}>
+                    <h5>Multiple mail transfers :</h5>
+                    <BootstrapSwitchButton
                 checked={false} 
                 width={100}/>
+                </Row>
                 </>
+                
+              
             )
     
     
