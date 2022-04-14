@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import axios from 'axios'
+import { Store } from 'react-notifications-component';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -50,9 +51,8 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-function CustomizedDialogs(props) {
+function CustomizedDialogs() {
 
-  console.log(props.result )
   const [open, setOpen] = React.useState(true);
 
   
@@ -60,28 +60,6 @@ function CustomizedDialogs(props) {
     setOpen(false);
   };
 
-  if(props.result == "OK"){
-        return (
-    <div>
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Successful ! !
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-          Congratulation !  Successfully created !!
-          </Typography>
-        </DialogContent>
-        
-      </BootstrapDialog>
-    </div>
-  );
-
-  }else if (props.result == "NO"){
      return (
     <div>
       <BootstrapDialog
@@ -101,7 +79,7 @@ function CustomizedDialogs(props) {
       </BootstrapDialog>
     </div>
   );
-  }
+  
 
 
  
@@ -119,8 +97,36 @@ function Register() {
           await axios.get('http://192.168.8.100:5000/user/register/'+name)
             .then(function (response)
             {
-              setResult(response.status);
-              <CustomizedDialogs result = {results}/>
+              if(response.statusText =="OK"){
+                Store.addNotification({
+                title: "Congratulation",
+                message: "Create Successful  !!!",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 5000,
+                    onScreen: true
+                }
+                })
+              }else{
+                Store.addNotification({
+                  title: "Worning",
+                  message: "Create Fail !!!",
+                  type: "danger",
+                  insert: "top",
+                  container: "top-right",
+                  animationIn: ["animate__animated", "animate__fadeIn"],
+                  animationOut: ["animate__animated", "animate__fadeOut"],
+                  dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                  }
+                  })
+              }
+              
               // handle success
             })
         }
@@ -131,7 +137,7 @@ function Register() {
         <>  
         <div>
 
-            <CustomizedDialogs result = {results}/>
+            <CustomizedDialogs/>
             <Card style={{ width: '100%' }}>
                 <Card.Header>
                 <h3 className="card-title">Card Register</h3>
