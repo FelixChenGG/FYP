@@ -27,7 +27,6 @@ function WebCamRecord() {
             </figure>
             </Card.Body>
             </Card>
-            
                 </>
             )
     
