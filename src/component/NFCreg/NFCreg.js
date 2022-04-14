@@ -83,7 +83,6 @@ function CustomizedDialogs() {
 }
 
 function SuccessDialogs(props) {
-
   const [open, setOpen] = React.useState(true);
   const handleClose = () => {
     setOpen(false);
