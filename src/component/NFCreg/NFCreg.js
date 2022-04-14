@@ -82,46 +82,45 @@ function CustomizedDialogs() {
   );
 }
 
-function SuccessDialogs(props) {
-  const [open, setOpen] = React.useState(true);
-  const handleClose = () => {
-    setOpen(false);
-  };
-  console.log(props.statusText)
-  if (props.statusText == "OK"){
-    return (
-    <div>
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Successful ! !
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-          Congratulation !  Successfully created !!
-          </Typography>
-        </DialogContent>
-        
-      </BootstrapDialog>
-    </div>
-  );
-  }
+const SuccessDialogs=(props) =>{
+
 }
 
 
 function Register() {
         const [name, setName] = useState("")
-        
+        const [open, setOpen] = React.useState(true);
         const handleSubmit =async(event)=> {
           console.log(name);
           await axios.get('http://192.168.8.100:5000/user/register/'+name)
             .then(function (response)
             {
               // handle success
-              <SuccessDialogs status={response.statusText}/>
+              const handleClose = () => {
+                setOpen(false);
+              };
+              console.log(response.statusText )
+              if (response.statusText == "OK"){
+                return (
+                <div>
+                  <BootstrapDialog
+                    onClose={handleClose}
+                    aria-labelledby="customized-dialog-title"
+                    open={open}
+                  >
+                    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                      Successful ! !
+                    </BootstrapDialogTitle>
+                    <DialogContent dividers>
+                      <Typography gutterBottom>
+                      Congratulation !  Successfully created !!
+                      </Typography>
+                    </DialogContent>
+                    
+                  </BootstrapDialog>
+                </div>
+              );
+              }
             })
         }
         
