@@ -50,7 +50,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-function CustomizedDialogs(props) {
+function CustomizedDialogs() {
 
   const [open, setOpen] = React.useState(true);
 
@@ -59,10 +59,7 @@ function CustomizedDialogs(props) {
     setOpen(false);
   };
 
-  if (!props.test){
-    console.log(props.test)
-      setOpen(false);
-  }
+
 
   return (
     <div>
@@ -103,7 +100,7 @@ function Register() {
         return (
         <>  
         <div>
-            <CustomizedDialogs test = "hi"/>
+            <CustomizedDialogs />
             <Card style={{ width: '100%' }}>
                 <Card.Header>
                 <h3 className="card-title">Card Register</h3>
