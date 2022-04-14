@@ -82,6 +82,35 @@ function CustomizedDialogs() {
   );
 }
 
+function SuccessDialogs(props) {
+
+  const [open, setOpen] = React.useState(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+          Successful ! !
+        </BootstrapDialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+          Congratulation !  Successfully created !!
+          </Typography>
+        </DialogContent>
+        
+      </BootstrapDialog>
+    </div>
+  );
+}
+
+
 function Register() {
         const [name, setName] = useState("")
         
@@ -91,7 +120,7 @@ function Register() {
             .then(function (response)
             {
               // handle success
-              console.log(response);
+              <SuccessDialogs status={response.status}/>
             })
         }
         

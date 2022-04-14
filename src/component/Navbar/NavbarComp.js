@@ -52,7 +52,7 @@ export default class NavbarComp extends Component {
                             >
                                 <Nav.Link as={Link} to="/home">HOME</Nav.Link>
                                 <Nav.Link as={Link} to="/accessrecord">Access Record</Nav.Link>
-                                <Nav.Link as={Link} to="/nfcregister">NFC Rregister</Nav.Link>
+                                <Nav.Link as={Link} to="/nfcregister">NFC Register</Nav.Link>
                                 <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
                                 <Nav.Link as={Link} to="/setting">Setting</Nav.Link>
                             </Nav>

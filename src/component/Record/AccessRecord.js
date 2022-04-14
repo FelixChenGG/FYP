@@ -3,14 +3,22 @@ import { Card, Table,Pagination} from 'react-bootstrap'
 
 
 
-function AccessRecord() {
-        const [records, setRecords] = useState([])
+function addItem(props){
+    for(var i =0 ; i <= props.records; i++){
+        <Pagination.Item>{i}</Pagination.Item>
+    }
+}
 
+function AccessRecord() {
+    
+    const [records, setRecords] = useState([])
         useEffect(() => {
             fetch('http://127.0.0.1:5001/record/all')
             .then(res => res.json())
             .then(data => setRecords(data.data))
         }, [records]);
+
+        
 
    //setRecords(data)
         return (
@@ -44,9 +52,7 @@ function AccessRecord() {
                             Math.ceil(records.length/10)}
                           >
                          <Pagination.First />
-                         <Pagination.Item>{1}</Pagination.Item>
-                         <Pagination.Item>{2}</Pagination.Item>
-                         <Pagination.Item>{3}</Pagination.Item>
+                         <addItem records={records.length/10}/>
                          <Pagination.Last />
                          </Pagination>
                     </Card.Footer>
