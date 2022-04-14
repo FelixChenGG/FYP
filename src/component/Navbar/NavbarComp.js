@@ -11,6 +11,7 @@ import LEDpage from '../LEDpage/LEDpage';
 import NFCreg from '../NFCreg/NFCreg';
 import AccessRecord from '../Record/AccessRecord';
 import WebCamRecord from '../Record/WebCamRecord';
+import Setting from '../Setting/Setting';
 // import { Store } from 'react-notifications-component';
 // import 'react-notifications-component/dist/theme.css';
 // import "animate.css/animate.min.css";
@@ -53,7 +54,7 @@ export default class NavbarComp extends Component {
                                 <Nav.Link as={Link} to="/accessrecord">Access Record</Nav.Link>
                                 <Nav.Link as={Link} to="/nfcregister">NFC Rregister</Nav.Link>
                                 <Nav.Link as={Link} to="/webcamrecord">WebCam Record</Nav.Link>
-                                {/* <Nav.Link as={Link} to="/led">LED</Nav.Link> */}
+                                <Nav.Link as={Link} to="/setting">Setting</Nav.Link>
                             </Nav>
 
                         </Navbar.Collapse>
@@ -75,6 +76,9 @@ export default class NavbarComp extends Component {
                         </Route>
                     <Route path="/nfcregister">
                     <NFCreg/>
+                        </Route>
+                    <Route path="/setting">
+                    <Setting/>
                         </Route>
 
                     </Switch>

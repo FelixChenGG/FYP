@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-
+import axios from 'axios'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -79,11 +79,7 @@ function CustomizedDialogs(props) {
             Please put your NFC card on sensor.
           </Typography>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            OK
-          </Button>
-        </DialogActions>
+        
       </BootstrapDialog>
     </div>
   );
@@ -92,13 +88,17 @@ function CustomizedDialogs(props) {
 function Register() {
         const [name, setName] = useState("")
         
-        useEffect(() => {
-            fetch('http://192.168.8.100:5000/user/register/'+name)
-            .then(res => res.json())
-        }, []);
-        const handleSubmit =(event)=> {
+        const handleSubmit =async(event)=> {
           console.log(name);
+          await axios.get('http://192.168.8.100:5000/user/register/'+name)
+            .then(function (response)
+            {
+              // handle success
+              console.log(response);
+            })
         }
+        
+        
    
         return (
         <>  
@@ -106,13 +106,13 @@ function Register() {
             <CustomizedDialogs test = "hi"/>
             <Card style={{ width: '100%' }}>
                 <Card.Header>
-                <h3 className="card-title">Quick Example <small>jQuery Validation</small></h3>
+                <h3 className="card-title">Card Register</h3>
                 </Card.Header>
               
               <Form id="quickForm" onSubmit = {handleSubmit}>
                 <Card.Body>
                   <Form.Group >
-                  <Form.Label className="text-info"><h4>NFC Name</h4></Form.Label>
+                  <Form.Label className="text-info"><h4>Card Name</h4></Form.Label>
                   <Form.Control type="text" placeholder="Enter NFC Name"  
                   onChange={(e) => setName(e.target.value) }/>
                   {name==""?<Form.Text className="text-warning"><h6>Missing Value, Please enter !</h6>
