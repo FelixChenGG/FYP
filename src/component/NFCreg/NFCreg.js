@@ -88,8 +88,9 @@ function SuccessDialogs(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  return (
+  console.log(props.statusText)
+  if (props.statusText == "OK"){
+    return (
     <div>
       <BootstrapDialog
         onClose={handleClose}
@@ -108,6 +109,7 @@ function SuccessDialogs(props) {
       </BootstrapDialog>
     </div>
   );
+  }
 }
 
 
@@ -120,7 +122,7 @@ function Register() {
             .then(function (response)
             {
               // handle success
-              <SuccessDialogs status={response.status}/>
+              <SuccessDialogs status={response.statusText}/>
             })
         }
         

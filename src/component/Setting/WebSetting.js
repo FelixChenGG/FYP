@@ -1,6 +1,6 @@
 import React,{Component,useState,useEffect} from 'react'
 import { Form, FloatingLabel,Pagination} from 'react-bootstrap'
-
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 function WebSetting() {
@@ -13,7 +13,6 @@ function WebSetting() {
                   <Form.Group >
                   <Form.Label className="text-info"><h4>WebCam Image Address</h4></Form.Label>
                   <br/>
-                  <Form.Label>WebCam Image Address</Form.Label>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Email address"
@@ -26,7 +25,10 @@ function WebSetting() {
                   
                   </Form.Group>
               </Form>
-            
+
+              <BootstrapSwitchButton
+                checked={false} 
+                width={100}/>
                 </>
             )
     
