@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Card, Table,Pagination} from 'react-bootstrap'
 
 
@@ -38,19 +38,17 @@ function Paginations({ postsPerPage, totalPosts, paginate }) {
 function AccessRecord() {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
-    const currentPosts=[ {datatime:"1" },{datatime:"2" },{datatime:"2" },{datatime:"2" },{datatime:"2" }
-                                            ,{datatime:"2" },{datatime:"2" },{datatime:"2" },{datatime:"2" },{datatime:"2" }
-                                            ,{datatime:"2" },{datatime:"2" },{datatime:"2" },{datatime:"2" },{datatime:"2" }]
-        // useEffect(() => {
-        //     fetch('http://127.0.0.1:5001/record/all')
-        //     .then(res => res.json())
-        //     .then(data => setRecords(data.data))
-        // }, [records]);
+    const [records, setRecords] = useState();
+        useEffect(() => {
+            fetch('http://127.0.0.1:5001/record/all')
+            .then(res => res.json())
+            .then(data => setRecords(data.data))
+        }, [records]);
     
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const records = currentPosts.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPages = records.slice(indexOfFirstPost, indexOfLastPost)
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -68,7 +66,7 @@ function AccessRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {records.map(record =>(
+                                {currentPages.map(record =>(
                                 
                                 <tr>
                                 <td>{record.datetime}</td>
@@ -81,7 +79,7 @@ function AccessRecord() {
                     <Card.Footer className='bg-white' >
                     <Paginations
                         postsPerPage={postsPerPage}
-                        totalPosts={currentPosts.length}
+                        totalPosts={currentPage.length}
                         paginate={paginate}
                     />
                     </Card.Footer>
