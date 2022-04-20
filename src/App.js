@@ -12,6 +12,8 @@ import './login.css';
 import { Store } from 'react-notifications-component';
 import { Button,Card,Form, Container, AccordionButton} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css';
+//npm install --save font-awesome
 
 import {
   HashRouter as Router ,
