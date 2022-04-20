@@ -5,17 +5,17 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 function WebSetting() {
     const [address , setAddress] = useState("")
-    const [toggle, settoggle] = useState(false);
-    const handleChange=(toggle)=> {
-      if (toggle){
-        settoggle({toggle: false});
-        document.getElementById("moreAddressForm").style.display="block";
-      }else if(!toggle){
-        settoggle({toggle: true}); 
-        document.getElementById("moreAddressForm").style.display="none";
-        document.getElementById("moreAddressForm").reset();
-      }
-      }
+    // const [toggle, settoggle] = useState(false);
+    // const handleChange=(toggle)=> {
+    //   if (toggle){
+    //     settoggle({toggle: false});
+    //     document.getElementById("moreAddressForm").style.display="block";
+    //   }else if(!toggle){
+    //     settoggle({toggle: true}); 
+    //     document.getElementById("moreAddressForm").style.display="none";
+    //     document.getElementById("moreAddressForm").reset();
+    //   }
+    //   }
     
         return (
             <>
@@ -36,7 +36,7 @@ function WebSetting() {
                 </Form>
                 <br/><br/>
                 
-                <div class="divider"></div>
+                {/* <div class="divider"></div>
                 <Row xs={2} md={2} lg={2}>
                     <h5>Multiple mail transfers :</h5>
                     <BootstrapSwitchButton
@@ -61,7 +61,7 @@ function WebSetting() {
                   </Form.Group>
                 </Form>
                   ):null
-                }
+                } */}
                 </>
                 
               
