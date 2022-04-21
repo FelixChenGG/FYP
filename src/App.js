@@ -14,6 +14,8 @@ import { Button,Card,Form, Container, AccordionButton} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css';
 //npm install --save font-awesome
+import axios from 'axios'
+
 
 import {
   HashRouter as Router ,
@@ -154,7 +156,7 @@ function Login ()  {
   const [password, setPassword] = useState("");
   let { from } = location.state || { from: { pathname: "/index" } };
  
-  const handleSubmit =(event)=> { 
+  const handleSubmit =async(event)=> { 
     event.preventDefault();
     await axios.get('http://192.168.8.100:5000/login/'+password)
     .then(function (response)
