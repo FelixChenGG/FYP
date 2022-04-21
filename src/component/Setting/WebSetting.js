@@ -1,25 +1,52 @@
 import React,{Component,useState,useEffect} from 'react'
 import { Form, FloatingLabel,Row} from 'react-bootstrap'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-
-
+import Button from '@mui/material/Button';
+import axios from 'axios'
+import { Store } from 'react-notifications-component';
 function WebSetting() {
     const [address , setAddress] = useState("")
-    // const [toggle, settoggle] = useState(false);
-    // const handleChange=(toggle)=> {
-    //   if (toggle){
-    //     settoggle({toggle: false});
-    //     document.getElementById("moreAddressForm").style.display="block";
-    //   }else if(!toggle){
-    //     settoggle({toggle: true}); 
-    //     document.getElementById("moreAddressForm").style.display="none";
-    //     document.getElementById("moreAddressForm").reset();
-    //   }
-    //   }
-    
+    const handleSubmit =async(event)=> {
+      console.log(address);
+      await axios.get('http://192.168.8.100:5000/user/register/'+address)
+        .then(function (response)
+        {
+          if(response.statusText =="OK"){
+            Store.addNotification({
+            title: "Congratulation",
+            message: "Change Successful  !!!",
+            type: "success",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 5000,
+                onScreen: true
+            }
+            })
+          }else{
+            Store.addNotification({
+              title: "Worning",
+              message: "Create Fail !!!",
+              type: "danger",
+              insert: "top",
+              container: "top-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                  duration: 5000,
+                  onScreen: true
+              }
+              })
+          }
+          
+          // handle success
+        })
+    }
         return (
             <>
-            <Form id="addressForm" >
+            <Form id="addressForm" onSubmit = {handleSubmit}>
                   <Form.Group >
                   <Form.Label className="text-info"><h4>WebCam Image Address</h4></Form.Label>
                   <br/>
@@ -32,36 +59,15 @@ function WebSetting() {
                 </FloatingLabel>
                   {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
+                    <Button variant="primary" type="submit">
+                            Submit
+                    </Button>
                   </Form.Group>
+                  
                 </Form>
                 <br/><br/>
                 
-                {/* <div class="divider"></div>
-                <Row xs={2} md={2} lg={2}>
-                    <h5>Multiple mail transfers :</h5>
-                    <BootstrapSwitchButton
-                checked={false} 
-                width={100}
-                onChange={handleChange} />
-                </Row>
-                <br/><br/>
-               {toggle ?( <Form id="moreAddressForm" >
-                  <Form.Group >
-                  <Form.Label className="text-info"><h4>Addition Email Address</h4></Form.Label>
-                  <br/>
-                  <FloatingLabel
-                    controlId="floatingInput"
-                    label="Email address"
-                    className="mb-3"
-                    >
-                    <Form.Control type="email" placeholder="name@example.com" onChange={(e) => setAddress(e.target.value) }/>
-                </FloatingLabel>
-                  {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
-                    </Form.Text> : <p1> </p1>}
-                  </Form.Group>
-                </Form>
-                  ):null
-                } */}
+               
                 </>
                 
               

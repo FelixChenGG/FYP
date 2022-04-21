@@ -1,8 +1,10 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import DualListBox from 'react-dual-listbox';
 import 'react-dual-listbox/lib/react-dual-listbox.css';
 import 'font-awesome/css/font-awesome.min.css';
 //npm install --save font-awesome
+import { Form, FloatingLabel,Row} from 'react-bootstrap'
+
 const options = [
     { value: 'luna', label: 'Moon' },
     { value: 'phobos', label: 'Phobos' },
@@ -20,11 +22,10 @@ const options = [
 ];
 
 class EmialBox extends React.Component {
+    
     state = { selected: ['phobos', 'titan'] };
-
     constructor(props) {
         super(props);
-
         this.onChange = this.onChange.bind(this);
     }
 
@@ -36,11 +37,30 @@ class EmialBox extends React.Component {
         const { selected } = this.state;
 
         return (
+            <>
+            <Form id="mutiaddressForm" >
+                  <Form.Group >
+                  <Form.Label className="text-info"><h4>Multi Address</h4></Form.Label>
+                  <br/>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Email address"
+                    className="mb-3"
+                    >
+                    <Form.Control type="email" placeholder="name@example.com" onChange={(e) => setAddress(e.target.value) }/>
+                </FloatingLabel>
+                  {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
+                    </Form.Text> : <p1> </p1>}
+                  </Form.Group>
+                </Form>
+
             <DualListBox 
                 options={options}
                 selected={selected}
                 onChange={this.onChange}
             />
+            </>
+            
         );
     }
 }
