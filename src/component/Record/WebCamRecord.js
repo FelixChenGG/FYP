@@ -1,5 +1,5 @@
-import React,{Component,useState,useEffect} from 'react'
-import { Card, Table,Pagination} from 'react-bootstrap'
+import React,{useState,useEffect} from 'react'
+import { Card} from 'react-bootstrap'
 
 
 
@@ -22,7 +22,7 @@ function WebCamRecord() {
                 </Card.Header>
             <Card.Body>
             <figure class="figure">
-            <img class="card-img-top" src={"data:image/png;base64," + webimage} alt="Card image cap" ></img>
+            <img class="card-img-top" src={webimage} alt="Card image cap" ></img>
             <figcaption class="figure-caption">A caption for the above image.</figcaption>
             </figure>
             </Card.Body>

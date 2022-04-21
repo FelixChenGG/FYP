@@ -1,6 +1,5 @@
 import React,{Component,useState,useEffect} from 'react'
-import { Form, FloatingLabel,Row} from 'react-bootstrap'
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import { Form, FloatingLabel} from 'react-bootstrap'
 import Button from '@mui/material/Button';
 import axios from 'axios'
 import { Store } from 'react-notifications-component';
@@ -48,7 +47,7 @@ function WebSetting() {
             <>
             <Form id="addressForm" onSubmit = {handleSubmit}>
                   <Form.Group >
-                  <Form.Label className="text-info"><h4>WebCam Image Address</h4></Form.Label>
+                  <Form.Label className="text-info"><h4>Change WebCam Image Address</h4></Form.Label>
                   <br/>
                   <FloatingLabel
                     controlId="floatingInput"
@@ -59,6 +58,8 @@ function WebSetting() {
                 </FloatingLabel>
                   {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
+                    <br/>
+                    <br/>
                     <Button variant="primary" type="submit">
                             Submit
                     </Button>
