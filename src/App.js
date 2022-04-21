@@ -155,69 +155,70 @@ function Login ()  {
   let { from } = location.state || { from: { pathname: "/index" } };
  
   const handleSubmit =(event)=> { 
-       event.preventDefault();
-       
-      if(name === 'admin' && password === '1'){
+    event.preventDefault();
+    await axios.get('http://192.168.8.100:5000/login/'+password)
+    .then(function (response)
+    {
+      if(name === 'admin' && response.statusText =="OK"){
         auth.signin(() => {
-          history.replace(from);
-        });
+       history.replace(from);
+     });
+        Store.addNotification({
+        title: "Congratulation",
+        message: "Change Successful  !!!",
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+            duration: 5000,
+            onScreen: true
+        }
+        })
       }else{
-          history.push({pathname:"/",state:{}})
-          Store.addNotification({
-              title: "Worning",
-              message: "Username or Password incorrect !!!",
-              type: "danger",
-              insert: "top",
-              container: "top-right",
-              animationIn: ["animate__animated", "animate__fadeIn"],
-              animationOut: ["animate__animated", "animate__fadeOut"],
-              dismiss: {
-                  duration: 5000,
-                  onScreen: true
-              }
-              })
+        history.push({pathname:"/",state:{}})
+        Store.addNotification({
+          title: "Worning",
+          message: "Create Fail !!!",
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+              duration: 5000,
+              onScreen: true
+          }
+          })
       }
+     })
+      //  event.preventDefault();
+       
+      // if(name === 'admin' && password === '1'){
+      //   auth.signin(() => {
+      //     history.replace(from);
+      //   });
+      // }else{
+      //     history.push({pathname:"/",state:{}})
+      //     Store.addNotification({
+      //         title: "Worning",
+      //         message: "Username or Password incorrect !!!",
+      //         type: "danger",
+      //         insert: "top",
+      //         container: "top-right",
+      //         animationIn: ["animate__animated", "animate__fadeIn"],
+      //         animationOut: ["animate__animated", "animate__fadeOut"],
+      //         dismiss: {
+      //             duration: 5000,
+      //             onScreen: true
+      //         }
+      //         })
+      // }
       
 
   };
-  // event.preventDefault();
-  // await axios.get('http://192.168.8.100:5000/login/'+password)
-  // .then(function (response)
-  // {
-  //   if(name === 'admin' && response.statusText =="OK"){
-  //     auth.signin(() => {
-  //    history.replace(from);
-  //  });
-  //     Store.addNotification({
-  //     title: "Congratulation",
-  //     message: "Change Successful  !!!",
-  //     type: "success",
-  //     insert: "top",
-  //     container: "top-right",
-  //     animationIn: ["animate__animated", "animate__fadeIn"],
-  //     animationOut: ["animate__animated", "animate__fadeOut"],
-  //     dismiss: {
-  //         duration: 5000,
-  //         onScreen: true
-  //     }
-  //     })
-  //   }else{
-  //     history.push({pathname:"/",state:{}})
-  //     Store.addNotification({
-  //       title: "Worning",
-  //       message: "Create Fail !!!",
-  //       type: "danger",
-  //       insert: "top",
-  //       container: "top-right",
-  //       animationIn: ["animate__animated", "animate__fadeIn"],
-  //       animationOut: ["animate__animated", "animate__fadeOut"],
-  //       dismiss: {
-  //           duration: 5000,
-  //           onScreen: true
-  //       }
-  //       })
-  //   }
-  //  })
+  
 
 
       return (
