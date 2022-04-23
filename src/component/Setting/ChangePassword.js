@@ -8,8 +8,8 @@ function ChangePassword() {
     const [oldpass , setOldpass] = useState("")
     const [newpass , setNewpass] = useState("")
     const handleSubmit =async(event)=> {
-        console.log(oldpass);
-      await axios.get('http://192.168.8.100:5000/reset?old='+oldpass+'&new='+newpass)
+      const data = {old:oldpass,new:newpass}
+      await axios.post('http://192.168.8.100:5000/reset', {data})
         .then(function (response)
         {
           if(response.statusText =="OK"){
