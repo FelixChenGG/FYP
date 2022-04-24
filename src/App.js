@@ -27,13 +27,38 @@ import {
 library.add(faEnvelope, faKey,faLock,faUser);
 
 
+export function notify_front()  {
+  const ENDPOINT = "http://127.0.0.1:5000";
 
+  useEffect(() => {
+    const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
+    console.log("connected", socket);
+    socket.on("notify", (data) => {  
+      return (
+      Store.addNotification({
+        title: "Notification",
+        message: data,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+            duration: 5000,
+            onScreen: true
+        }
+        })
+    );});
+
+  }, []);
+}
 
 
 function App() {
   return (
     <ProvideAuth>
     <div className="App">
+      <notify_front />
       <ReactNotifications />
        <Router >
        <Switch>
