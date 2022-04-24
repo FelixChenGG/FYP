@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 //npm install --save font-awesome
 import { Form, FloatingLabel,Row} from 'react-bootstrap'
 import Button from '@mui/material/Button';
+import { Store } from 'react-notifications-component';
 
 // const options = [
 //     { value: 'luna', label: 'Moon' },
@@ -31,22 +32,55 @@ class EmialBox extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.HandleAddress = this.HandleAddress.bind(this);
         this.handleSubmit =this.handleSubmit.bind(this);
+        this.handleOnlick =this.handleOnlick.bind(this);
     }
 
     onChange(selected) {
-        this.setState({ selected });
+        this.setState({selected});
+        
     }
     HandleAddress(address){
-        console.log(address.target.value);
         this.setState({address:address.target.value});
         
     }
+    // 不能重複
     handleSubmit(e){
-        console.log(this.state.address);
-        this.setState({options:this.state.options.concat({value:this.state.address,label:this.state.address})})
+        console.log(this.state.options);
+        var i ;
+        if(this.state.options.length == 0){
+            this.setState({options:this.state.options.concat({value:this.state.address,label:this.state.address})})
+        }else{
+            for(i = 0;i <= this.state.options.length; i++){
+                if(this.state.options[i].value == this.state.address){
+                    Store.addNotification({
+                        title: "Worning",
+                        message: "Add Fail, has repeated !",
+                        type: "danger",
+                        insert: "top",
+                        container: "top-right",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                            duration: 5000,
+                            onScreen: true
+                        }
+                        })
+                }else if(i==this.state.options.length-1 ){
+                    this.setState({options:this.state.options.concat({value:this.state.address,label:this.state.address})})
+                }
+            
+            }
+        }
+        
         e.preventDefault();
+        
+        
     }
 
+    handleOnlick(e){
+        e.preventDefault();
+        console.log(this.state.selected);
+    }
 
 
     
@@ -65,23 +99,25 @@ class EmialBox extends React.Component {
                     className="mb-3"
                     >
                     <Form.Control type="email" placeholder="name@example.com" onChange={this.HandleAddress }/>
+                    <br/>
                     <Button variant="primary" type="submit">
                             Add
                     </Button>
                 </FloatingLabel>
-                  {this.state.address===""?<Form.Text className="text-muted">Missing Value, Please enter !
-                    </Form.Text> : <p1> </p1>}
                   </Form.Group>
                 </Form>
-
+                <br/>
+                <br/>
             <DualListBox 
                 options={this.state.options}
                 selected={selected}
                 onChange={this.onChange}
                 onClick={this.onClick}
             />
+            <br/>
+            <br/>
 
-                <Button variant="primary" type="button">
+                <Button variant="primary" type="button" onClick={this.handleOnlick}>
                             Submit
                     </Button>
             </>
