@@ -56,11 +56,11 @@ function WebSetting() {
                     >
                     <Form.Control type="email" placeholder="name@example.com" onChange={(e) => setAddress(e.target.value) }/>
                 </FloatingLabel>
-                  {address===""?<Form.Text className="text-muted">Missing Value, Please enter !
+                  {address===""?<Form.Text className="text-danger">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
                     <br/>
                     <br/>
-                    <Button variant="primary" type="submit">
+                    <Button className="bg-info" variant="primary" type="submit">
                             Submit
                     </Button>
                   </Form.Group>

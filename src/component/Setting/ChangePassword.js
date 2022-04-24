@@ -58,7 +58,7 @@ function ChangePassword() {
                     >
                     <Form.Control type="password" placeholder="name@example.com" name= 'old' onChange={(e) => setOldpass(e.target.value) }/>
                 </FloatingLabel>
-                {oldpass===""?<Form.Text className="text-muted">Missing Value, Please enter !
+                {oldpass===""?<Form.Text className="text-danger">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
                     <br/>
                 <br/>
@@ -70,11 +70,11 @@ function ChangePassword() {
                     <Form.Control type="password" placeholder="name@example.com" name= 'new' onChange={(e) => setNewpass(e.target.value)} />
                 </FloatingLabel>
 
-                  {newpass===""?<Form.Text className="text-muted">Missing Value, Please enter !
+                  {newpass===""?<Form.Text className="text-danger">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
                     <br/>
                     <br/>
-                    <Button variant="primary" type="submit">
+                    <Button className="bg-info" variant="primary" type="submit">
                             Submit
                     </Button>
                   </Form.Group>

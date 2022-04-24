@@ -117,7 +117,7 @@ class EmialBox extends React.Component {
             <br/>
             <br/>
 
-                <Button variant="primary" type="button" onClick={this.handleOnlick}>
+                <Button  className="bg-info" variant="primary" type="button" onClick={this.handleOnlick}>
                             Submit
                     </Button>
             </>

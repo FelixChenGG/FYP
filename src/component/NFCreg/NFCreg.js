@@ -157,7 +157,7 @@ function Register() {
                 </Card.Body>
                 
                 <Card.Footer>
-                    <Button variant="primary" type="submit">
+                    <Button  className="bg-primary"variant="primary" type="submit">
                             Submit
                     </Button>
                 </Card.Footer>
