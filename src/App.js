@@ -26,7 +26,7 @@ library.add(faEnvelope, faKey,faLock,faUser);
 
 
 // export function notify_front()  {
-//   const ENDPOINT = "http://192.168.8.101:5000";
+//   const ENDPOINT = "http://192.168.1.9:5000";
 
 //     const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
 //     console.log("connected", socket);

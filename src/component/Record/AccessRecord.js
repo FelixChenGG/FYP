@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Card, Table,Pagination} from 'react-bootstrap'
 
@@ -37,16 +38,17 @@ function AccessRecord() {
     const [postsPerPage] = useState(10);
     //const records = [{datetime:1},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datatime:11},{datatime:11},{datatime:11},{datatime:11}]
     const [records, setRecords] = useState();
-        useEffect(() => {
-            fetch('http://192.168.8.101:5000/record/all')
-            .then(res => res.json())
-            .then(data => setRecords(data.data))
-        }, [records]);
+    useEffect(() => {
+        fetch('http://192.168.1.9:5000/record/all')
+        .then(res => res.json())
+        .then(data => setRecords(data))
+    }, [records]);
     
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPages = records.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPages = records?records.slice(indexOfFirstPost, indexOfLastPost):[]
+    console.log(currentPages)
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
    //setRecords(data)
@@ -76,7 +78,7 @@ function AccessRecord() {
                     <Card.Footer className='bg-white' >
                     <Paginations
                         postsPerPage={postsPerPage}
-                        totalPosts={records.length}
+                        totalPosts={records?records.length:0}
                         paginate={paginate}
                     />
                     </Card.Footer>
