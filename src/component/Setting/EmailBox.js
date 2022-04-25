@@ -6,6 +6,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { Form, FloatingLabel,Row} from 'react-bootstrap'
 import Button from '@mui/material/Button';
 import { Store } from 'react-notifications-component';
+import axios from 'axios';
 
 // const options = [
 //     { value: 'luna', label: 'Moon' },
@@ -79,6 +80,7 @@ class EmialBox extends React.Component {
 
     handleOnlick(e){
         e.preventDefault();
+        axios.post('http://192.168.8.101:5000/email/send',{'email':this.state.selected})
         console.log(this.state.selected);
     }
 

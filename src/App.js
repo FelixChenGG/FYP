@@ -1,4 +1,3 @@
-//import React, { Header  } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavbarComp from './component/Navbar/NavbarComp';
@@ -10,11 +9,10 @@ import 'react-notifications-component/dist/theme.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './login.css';
 import { Store } from 'react-notifications-component';
-import { Button,Card,Form, Container, AccordionButton} from 'react-bootstrap';
+import { Button,Card,Form, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css';
-//npm install --save font-awesome
-import axios from 'axios'
+
 import {
   HashRouter as Router ,
   Route,
@@ -27,38 +25,35 @@ import {
 library.add(faEnvelope, faKey,faLock,faUser);
 
 
-export function notify_front()  {
-  const ENDPOINT = "http://127.0.0.1:5000";
+// export function notify_front()  {
+//   const ENDPOINT = "http://192.168.8.101:5000";
 
-  useEffect(() => {
-    const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
-    console.log("connected", socket);
-    socket.on("notify", (data) => {  
-      return (
-      Store.addNotification({
-        title: "Notification",
-        message: data,
-        type: "success",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-            duration: 5000,
-            onScreen: true
-        }
-        })
-    );});
-
-  }, []);
-}
-
+//     const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
+//     console.log("connected", socket);
+//     socket.on("notify", (data) => {  
+//       console.log(data)
+//       return (
+//       Store.addNotification({
+//         title: "Notification",
+//         message: data,
+//         type: "success",
+//         insert: "top",
+//         container: "top-right",
+//         animationIn: ["animate__animated", "animate__fadeIn"],
+//         animationOut: ["animate__animated", "animate__fadeOut"],
+//         dismiss: {
+//             duration: 5000,
+//             onScreen: true
+//         }
+//         })
+//     );})
+//   }
 
 function App() {
   return (
     <ProvideAuth>
+    <notify_front />
     <div className="App">
-      <notify_front />
       <ReactNotifications />
        <Router >
        <Switch>
@@ -163,7 +158,7 @@ function Login ()  {
  
   const handleSubmit =async(event)=> { 
     // event.preventDefault();
-    // await axios.get('http://192.168.8.100:5000/login/'+password)
+    // await axios.get('http://192.168.8.101:5000/login/'+password)
     // .then(function (response)
     // {
     //   if(name === 'admin' && response.statusText =="OK"){

@@ -8,7 +8,7 @@ function WebCamRecord() {
     const [webimage, setWebImage] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5001/record/all')
+        fetch('http://192.168.8.101:5000/cam/photo')
         .then(res => res.json())
         .then(data => setWebImage(data))
     }, [webimage]);
