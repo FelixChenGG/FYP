@@ -1,4 +1,4 @@
-import React,{Component,useState,useEffect} from 'react'
+import React,{Component,useState} from 'react'
 import { Card, Form} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
@@ -89,15 +88,12 @@ function CustomizedDialogs() {
 
 function Register() {
         const [name, setName] = useState("hi")
-        const [results, setResult] = useState("NO")
-        
-        
         const handleSubmit =async(event)=> {
           console.log(name);
           await axios.get('http://192.168.8.101:5000/user/register/'+name)
             .then(function (response)
             {
-              if(response.statusText =="OK"){
+              if(response.statusText ==="OK"){
                 Store.addNotification({
                 title: "Congratulation",
                 message: "Create Successful  !!!",
@@ -149,7 +145,7 @@ function Register() {
                   <Form.Label className="text-info"><h4>Card Name</h4></Form.Label>
                   <Form.Control type="text" placeholder="Enter NFC Name"  
                   onChange={(e) => setName(e.target.value) }/>
-                  {name==""?<Form.Text className="text-warning"><h6>Missing Value, Please enter !</h6>
+                  {name===""?<Form.Text className="text-warning"><h6>Missing Value, Please enter !</h6>
     </Form.Text> : <p1> </p1>}
                   
                   </Form.Group>

@@ -1,9 +1,9 @@
-import React ,{useState}from 'react';
+import React from 'react';
 import DualListBox from 'react-dual-listbox';
 import 'react-dual-listbox/lib/react-dual-listbox.css';
 import 'font-awesome/css/font-awesome.min.css';
 //npm install --save font-awesome
-import { Form, FloatingLabel,Row} from 'react-bootstrap'
+import { Form, FloatingLabel} from 'react-bootstrap'
 import Button from '@mui/material/Button';
 import { Store } from 'react-notifications-component';
 import axios from 'axios';
@@ -48,11 +48,11 @@ class EmialBox extends React.Component {
     handleSubmit(e){
         console.log(this.state.options);
         var i ;
-        if(this.state.options.length == 0){
+        if(this.state.options.length === 0){
             this.setState({options:this.state.options.concat({value:this.state.address,label:this.state.address})})
         }else{
             for(i = 0;i <= this.state.options.length; i++){
-                if(this.state.options[i].value == this.state.address){
+                if(this.state.options[i].value === this.state.address){
                     Store.addNotification({
                         title: "Worning",
                         message: "Add Fail, has repeated !",
@@ -66,7 +66,7 @@ class EmialBox extends React.Component {
                             onScreen: true
                         }
                         })
-                }else if(i==this.state.options.length-1 ){
+                }else if(i===this.state.options.length-1 ){
                     this.setState({options:this.state.options.concat({value:this.state.address,label:this.state.address})})
                 }
             

@@ -1,5 +1,5 @@
 
-import React,{Component,useEffect,useState} from 'react'
+import React,{useState} from 'react'
 import { Row, Container, Badge,Card, Button,Col  } from 'react-bootstrap'
 import { DoorClosed , DoorOpenFill } from 'react-bootstrap-icons';
 import axios from 'axios'
@@ -14,7 +14,7 @@ function Home() {
     const HandleClick=async(e)=> {
         console.log(e.target.value)
         setCount(e.target.value)
-        if(count % 2 == 0){
+        if(count % 2 === 0){
             setIsOpen(false)
         }else{
             setIsOpen(true)

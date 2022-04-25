@@ -1,4 +1,4 @@
-import React,{Component,useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import { Form, FloatingLabel} from 'react-bootstrap'
 import Button from '@mui/material/Button';
 import axios from 'axios'
@@ -12,7 +12,7 @@ function ChangePassword() {
       await axios.post('http://192.168.8.101:5000/reset', {data})
         .then(function (response)
         {
-          if(response.statusText =="OK"){
+          if(response.statusText ==="OK"){
             Store.addNotification({
             title: "Congratulation",
             message: "Change Successful  !!!",

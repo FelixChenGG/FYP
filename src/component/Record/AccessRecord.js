@@ -3,11 +3,7 @@ import { Card, Table,Pagination} from 'react-bootstrap'
 
 
 
-// const addItem=(props)=>{
-//     for(var i=0 ; i <= props.records; i++){
-//         <Pagination.Item>{i}</Pagination.Item>
-//     }
-// }
+
 
 
 function Paginations({ postsPerPage, totalPosts, paginate }) {
@@ -19,6 +15,7 @@ function Paginations({ postsPerPage, totalPosts, paginate }) {
   }
   console.log(postsPerPage, totalPosts, paginate )
   return (
+    
     <nav>
       <Pagination>
         {pageNumbers.map(number => (
@@ -38,6 +35,7 @@ function Paginations({ postsPerPage, totalPosts, paginate }) {
 function AccessRecord() {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
+    //const records = [{datetime:1},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datatime:11},{datatime:11},{datatime:11},{datatime:11}]
     const [records, setRecords] = useState();
         useEffect(() => {
             fetch('http://192.168.8.101:5000/record/all')
@@ -51,7 +49,6 @@ function AccessRecord() {
     const currentPages = records.slice(indexOfFirstPost, indexOfLastPost)
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
-
    //setRecords(data)
         return (
         <>  <Card style={{ width: '100%' }}>
@@ -79,7 +76,7 @@ function AccessRecord() {
                     <Card.Footer className='bg-white' >
                     <Paginations
                         postsPerPage={postsPerPage}
-                        totalPosts={currentPage.length}
+                        totalPosts={records.length}
                         paginate={paginate}
                     />
                     </Card.Footer>
