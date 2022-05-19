@@ -26,29 +26,29 @@ import {
 library.add(faEnvelope, faKey,faLock,faUser);
 
 
-// export function notify_front()  {
-//   const ENDPOINT = "http://192.168.1.9:5000";
+export function notify_front()  {
+  const ENDPOINT = "http://localhost:5000";
 
-//     const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
-//     console.log("connected", socket);
-//     socket.on("notify", (data) => {  
-//       console.log(data)
-//       return (
-//       Store.addNotification({
-//         title: "Notification",
-//         message: data,
-//         type: "success",
-//         insert: "top",
-//         container: "top-right",
-//         animationIn: ["animate__animated", "animate__fadeIn"],
-//         animationOut: ["animate__animated", "animate__fadeOut"],
-//         dismiss: {
-//             duration: 5000,
-//             onScreen: true
-//         }
-//         })
-//     );})
-//   }
+    const socket = io.connect(ENDPOINT, { rejectUnauthorized: false }); 
+    console.log("connected", socket);
+    socket.on("notify", (data) => {  
+      console.log(data)
+      return (
+      Store.addNotification({
+        title: "Notification",
+        message: data,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+            duration: 5000,
+            onScreen: true
+        }
+        })
+    );})
+  }
 
 function App() {
   return (
@@ -159,66 +159,44 @@ function Login ()  {
  
   const handleSubmit =async(event)=> { 
     event.preventDefault();
-  //   await axios.get('http://192.168.1.11:5000/login/'+password)
-  //   .then(function (response)
-  //   {
-  //     console.log(response.data.status)
-  //     if(name === 'admin' && response.data.status =="ok"){
-  //       auth.signin(() => {
-  //      history.replace(from);
-  //    });
-  //       Store.addNotification({
-  //       title: "Congratulation",
-  //       message: "Login Successful  !!!",
-  //       type: "success",
-  //       insert: "top",
-  //       container: "top-right",
-  //       animationIn: ["animate__animated", "animate__fadeIn"],
-  //       animationOut: ["animate__animated", "animate__fadeOut"],
-  //       dismiss: {
-  //           duration: 5000,
-  //           onScreen: true
-  //       }
-  //       })
-  //     }else{
-  //       history.push({pathname:"/",state:{}})
-  //       Store.addNotification({
-  //         title: "Worning",
-  //         message: "Login Fail !!!",
-  //         type: "danger",
-  //         insert: "top",
-  //         container: "top-right",
-  //         animationIn: ["animate__animated", "animate__fadeIn"],
-  //         animationOut: ["animate__animated", "animate__fadeOut"],
-  //         dismiss: {
-  //             duration: 5000,
-  //             onScreen: true
-  //         }
-  //         })
-  //     }
-  //    })
-  //      event.preventDefault();
-       
-      if(name === 'admin' && password === '1'){
+    await axios.get('http://localhost:5000/login/'+password)
+    .then(function (response)
+    {
+      console.log(response.data.status)
+      if(name === 'admin' && response.data.status =="ok"){
         auth.signin(() => {
-          history.replace(from);
-        });
+       history.replace(from);
+     });
+        Store.addNotification({
+        title: "Congratulation",
+        message: "Login Successful  !!!",
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+            duration: 5000,
+            onScreen: true
+        }
+        })
       }else{
-          history.push({pathname:"/",state:{}})
-          Store.addNotification({
-              title: "Worning",
-              message: "Username or Password incorrect !!!",
-              type: "danger",
-              insert: "top",
-              container: "top-right",
-              animationIn: ["animate__animated", "animate__fadeIn"],
-              animationOut: ["animate__animated", "animate__fadeOut"],
-              dismiss: {
-                  duration: 5000,
-                  onScreen: true
-              }
-              })
+        history.push({pathname:"/",state:{}})
+        Store.addNotification({
+          title: "Worning",
+          message: "Login Fail !!!",
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+              duration: 5000,
+              onScreen: true
+          }
+          })
       }
+     })
       
 
   };

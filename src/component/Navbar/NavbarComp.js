@@ -12,28 +12,6 @@ import NFCreg from '../NFCreg/NFCreg';
 import AccessRecord from '../Record/AccessRecord';
 import WebCamRecord from '../Record/WebCamRecord';
 import Setting from '../Setting/Setting';
-// import { Store } from 'react-notifications-component';
-// import 'react-notifications-component/dist/theme.css';
-// import "animate.css/animate.min.css";
-// //npm install react-notifications-component
-// //npm run build
-
-// function Noti(){
-//     Store.addNotification({
-//             title: "Wonderful!",
-//             message: "teodosii@react-notifications-component",
-//             type: "success",
-//             insert: "top",
-//             container: "top-right",
-//             animationIn: ["animate__animated", "animate__fadeIn"],
-//             animationOut: ["animate__animated", "animate__fadeOut"],
-//             dismiss: {
-//               duration: 5000,
-//               onScreen: true
-//             }
-//           })
-
-// }
 
 
 export default class NavbarComp extends Component {

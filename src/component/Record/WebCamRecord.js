@@ -8,7 +8,7 @@ function WebCamRecord() {
     const [webimage, setWebImage] = useState([])
 
     const fetchImage = async () => {
-        const res = await fetch('http://192.168.1.9:5000/cam/photo');
+        const res = await fetch('http://localhost:5000/cam/photo');
         const imageBlob = await res.blob();
         const imageObjectURL = URL.createObjectURL(imageBlob);
         setWebImage(imageObjectURL);

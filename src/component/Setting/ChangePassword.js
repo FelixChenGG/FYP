@@ -10,7 +10,7 @@ function ChangePassword() {
     const handleSubmit =async()=> {
       const data = {old:oldpass,new:newpass}
       // console.log(data)
-      await axios.post('http://192.168.1.11:5000/reset', {data})
+      await axios.post('http://localhost:5000/reset', {data})
         .then(function (response)
         {
           if(response.data.status ==="ok"){

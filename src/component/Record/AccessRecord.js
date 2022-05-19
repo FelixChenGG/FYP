@@ -37,10 +37,9 @@ function Paginations({ postsPerPage, totalPosts, paginate }) {
 function AccessRecord() {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
-    //const records = [{datetime:1},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datetime:11},{datatime:11},{datatime:11},{datatime:11},{datatime:11}]
     const [records, setRecords] = useState();
     useEffect(() => {
-        fetch('http://192.168.1.9:5000/record/all')
+        fetch('http://localhost:5000/record/all')
         .then(res => res.json())
         .then(data => setRecords(data))
     }, [records]);

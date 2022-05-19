@@ -90,7 +90,7 @@ function Register() {
         const [name, setName] = useState("hi")
         const handleSubmit =async(event)=> {
           console.log(name);
-          await axios.get('http://192.168.1.9:5000/user/register/'+name)
+          await axios.get('http://localhost:5000/user/register/'+name)
             .then(function (response)
             {
               if(response.statusText ==="OK"){

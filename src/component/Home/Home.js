@@ -19,7 +19,7 @@ function Home() {
         }else{
             setIsOpen(true)
         }
-        await axios.get('http://192.168.1.9:5000/door/open')
+        await axios.get('http://localhost:5000/door/open')
         .then(function (response) {
             // handle success
             console.log(response);

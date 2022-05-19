@@ -7,7 +7,7 @@ function WebSetting() {
     const [address , setAddress] = useState("")
     const handleSubmit =async(event)=> {
       console.log(address);
-      await axios.get('http://192.168.1.11:5000//user/email/'+address)
+      await axios.get('http://localhost:5000//user/email/'+address)
         .then(function (response)
         {
           if(response.data.status ==="ok"){
