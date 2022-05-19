@@ -7,12 +7,13 @@ import { Store } from 'react-notifications-component';
 function ChangePassword() {
     const [oldpass , setOldpass] = useState("")
     const [newpass , setNewpass] = useState("")
-    const handleSubmit =async(event)=> {
+    const handleSubmit =async()=> {
       const data = {old:oldpass,new:newpass}
-      await axios.post('http://192.168.1.9:5000/reset', {data})
+      // console.log(data)
+      await axios.post('http://192.168.1.11:5000/reset', {data})
         .then(function (response)
         {
-          if(response.statusText ==="OK"){
+          if(response.data.status ==="ok"){
             Store.addNotification({
             title: "Congratulation",
             message: "Change Successful  !!!",
@@ -29,7 +30,7 @@ function ChangePassword() {
           }else{
             Store.addNotification({
               title: "Worning",
-              message: "Create Fail !!!",
+              message: "Change Fail !!!",
               type: "danger",
               insert: "top",
               container: "top-right",
@@ -56,7 +57,7 @@ function ChangePassword() {
                     label="Old Password"
                     className="mb-3"
                     >
-                    <Form.Control type="password" placeholder="name@example.com" name= 'old' onChange={(e) => setOldpass(e.target.value) }/>
+                    <Form.Control type="password"  name= 'old' onChange={(e) => setOldpass(e.target.value) }/>
                 </FloatingLabel>
                 {oldpass===""?<Form.Text className="text-danger">Missing Value, Please enter !
                     </Form.Text> : <p1> </p1>}
@@ -67,7 +68,7 @@ function ChangePassword() {
                     label="New Password"
                     className="mb-3"
                     >
-                    <Form.Control type="password" placeholder="name@example.com" name= 'new' onChange={(e) => setNewpass(e.target.value)} />
+                    <Form.Control type="password"  name= 'new' onChange={(e) => setNewpass(e.target.value)} />
                 </FloatingLabel>
 
                   {newpass===""?<Form.Text className="text-danger">Missing Value, Please enter !

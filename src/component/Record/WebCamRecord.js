@@ -15,8 +15,10 @@ function WebCamRecord() {
       };
     
       useEffect(() => {
-        fetchImage();
-      }, []);
+  
+          fetchImage();
+
+      }, [webimage]);
     
         return (
             <>
@@ -26,7 +28,7 @@ function WebCamRecord() {
                 </Card.Header>
             <Card.Body>
             <figure className="figure">
-            <img className="card-img-top" src={webimage} alt="Card image cap" ></img>
+            <img className="card-img-top" src='img/image.jpg' alt="Card image cap" ></img>
             <figcaption className="figure-caption">A caption for the above image.</figcaption>
             </figure>
             </Card.Body>

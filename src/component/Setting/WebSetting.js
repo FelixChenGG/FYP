@@ -7,10 +7,10 @@ function WebSetting() {
     const [address , setAddress] = useState("")
     const handleSubmit =async(event)=> {
       console.log(address);
-      await axios.get('http://192.168.1.9:5000//user/email/'+address)
+      await axios.get('http://192.168.1.11:5000//user/email/'+address)
         .then(function (response)
         {
-          if(response.statusText ==="OK"){
+          if(response.data.status ==="ok"){
             Store.addNotification({
             title: "Congratulation",
             message: "Change Successful  !!!",
@@ -27,7 +27,7 @@ function WebSetting() {
           }else{
             Store.addNotification({
               title: "Worning",
-              message: "Create Fail !!!",
+              message: "Change Fail !!!",
               type: "danger",
               insert: "top",
               container: "top-right",

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Card, Table,Pagination} from 'react-bootstrap'
+import { Store } from 'react-notifications-component';
 
 
 
@@ -53,7 +54,10 @@ function AccessRecord() {
     const paginate = pageNumber => setCurrentPage(pageNumber);
    //setRecords(data)
         return (
-        <>  <Card style={{ width: '100%' }}>
+          
+        <>  
+        <noti />
+        <Card style={{ width: '100%' }}>
                     <Card.Header className='bg-white'>Access Record</Card.Header>
                     <Card.Body className='bg-white'>
 
@@ -66,7 +70,7 @@ function AccessRecord() {
                             </thead>
                             <tbody>
                                 {currentPages.map(record =>(
-                                
+                          
                                 <tr>
                                 <td>{record.datetime}</td>
                                 <td>{record.msg}</td>

@@ -80,7 +80,7 @@ class EmialBox extends React.Component {
 
     handleOnlick(e){
         e.preventDefault();
-        axios.post('http://192.168.1.9:5000/email/send',{'email':this.state.selected})
+        axios.post('http://192.168.1.11:5000/email/send',{'email':this.state.selected})
         console.log(this.state.selected);
     }
 

@@ -12,6 +12,7 @@ import { Store } from 'react-notifications-component';
 import { Button,Card,Form, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css';
+import axios from 'axios'
 
 import {
   HashRouter as Router ,
@@ -157,45 +158,46 @@ function Login ()  {
   let { from } = location.state || { from: { pathname: "/index" } };
  
   const handleSubmit =async(event)=> { 
-    // event.preventDefault();
-    // await axios.get('http://192.168.8.101:5000/login/'+password)
-    // .then(function (response)
-    // {
-    //   if(name === 'admin' && response.statusText =="OK"){
-    //     auth.signin(() => {
-    //    history.replace(from);
-    //  });
-    //     Store.addNotification({
-    //     title: "Congratulation",
-    //     message: "Change Successful  !!!",
-    //     type: "success",
-    //     insert: "top",
-    //     container: "top-right",
-    //     animationIn: ["animate__animated", "animate__fadeIn"],
-    //     animationOut: ["animate__animated", "animate__fadeOut"],
-    //     dismiss: {
-    //         duration: 5000,
-    //         onScreen: true
-    //     }
-    //     })
-    //   }else{
-    //     history.push({pathname:"/",state:{}})
-    //     Store.addNotification({
-    //       title: "Worning",
-    //       message: "Create Fail !!!",
-    //       type: "danger",
-    //       insert: "top",
-    //       container: "top-right",
-    //       animationIn: ["animate__animated", "animate__fadeIn"],
-    //       animationOut: ["animate__animated", "animate__fadeOut"],
-    //       dismiss: {
-    //           duration: 5000,
-    //           onScreen: true
-    //       }
-    //       })
-    //   }
-    //  })
-       event.preventDefault();
+    event.preventDefault();
+  //   await axios.get('http://192.168.1.11:5000/login/'+password)
+  //   .then(function (response)
+  //   {
+  //     console.log(response.data.status)
+  //     if(name === 'admin' && response.data.status =="ok"){
+  //       auth.signin(() => {
+  //      history.replace(from);
+  //    });
+  //       Store.addNotification({
+  //       title: "Congratulation",
+  //       message: "Login Successful  !!!",
+  //       type: "success",
+  //       insert: "top",
+  //       container: "top-right",
+  //       animationIn: ["animate__animated", "animate__fadeIn"],
+  //       animationOut: ["animate__animated", "animate__fadeOut"],
+  //       dismiss: {
+  //           duration: 5000,
+  //           onScreen: true
+  //       }
+  //       })
+  //     }else{
+  //       history.push({pathname:"/",state:{}})
+  //       Store.addNotification({
+  //         title: "Worning",
+  //         message: "Login Fail !!!",
+  //         type: "danger",
+  //         insert: "top",
+  //         container: "top-right",
+  //         animationIn: ["animate__animated", "animate__fadeIn"],
+  //         animationOut: ["animate__animated", "animate__fadeOut"],
+  //         dismiss: {
+  //             duration: 5000,
+  //             onScreen: true
+  //         }
+  //         })
+  //     }
+  //    })
+  //      event.preventDefault();
        
       if(name === 'admin' && password === '1'){
         auth.signin(() => {
